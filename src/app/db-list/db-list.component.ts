@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { dbModel } from '../clases/db-model';
+import { Router } from '@angular/router';
+import { DatabasesService } from '../services/databases.service';
 
 @Component({
   selector: 'app-db-list',
@@ -7,19 +9,20 @@ import { dbModel } from '../clases/db-model';
   styleUrls: ['./db-list.component.css']
 })
 export class DbListComponent implements OnInit {
+  public dbslocal: Array<dbModel> = [];
 
-  private db1: dbModel;
-  private db2: dbModel;
-  private db3: dbModel;
-
-  constructor() { }
-
+  constructor(private enrutador: Router, private servicioDatos: DatabasesService) {
+    this.dbslocal = [];
+    this.loadDatabases();
+  }
   ngOnInit() {
   }
-
-  loadSchemas() {
-    this.db1 = new dbModel("DB Principal", ["schema transactional", "schema repository"]);
-    this.db2 = new dbModel("DB Control", ["schema control"]);
-    this.db3 = new dbModel("DB Seguridad", ["schema security"]);
+  listDatabases(db: string) {
+    //this.enrutador.navigate(['db-schema-list', db]);
+    this.enrutador.navigate(['db-table-list', db]);
+  }
+  loadDatabases() {
+    this.dbslocal = this.servicioDatos.loadDatabases();
+    console.log(this.dbslocal);
   }
 }

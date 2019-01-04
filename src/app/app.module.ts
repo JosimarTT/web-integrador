@@ -6,16 +6,18 @@ import { LoginComponent } from './login/login.component';
 import { DbListComponent } from './db-list/db-list.component';
 import { DbTableListComponent } from './db-table-list/db-table-list.component';
 import { TableDescriptionComponent } from './table-description/table-description.component';
+import { RutasModule } from './rutas.module';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DbListComponent,
     DbTableListComponent,
-    TableDescriptionComponent,
+    TableDescriptionComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RutasModule
   ],
   providers: [],
   bootstrap: [AppComponent]

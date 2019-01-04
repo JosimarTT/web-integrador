@@ -1,11 +1,12 @@
 <div class="container text-center">
-    <h1>Listado de las tablas de la BD **nombre**</h1>
+    <h1>Listado de las tablas de {{databaseName }}</h1>
+    <br>
+    <img alt="">
+    <br>
     <div class="container text-center col-md-4 col-offset-4">
-        <button type="submit" class="btn btn-primary">Regresar</button>
+        <button type="button" class="btn btn-primary" (click)="funReturn()">Regresar</button>
         <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action">tb1</a>
-            <a href="#" class="list-group-item list-group-item-action">tb2</a>
-            <a href="#" class="list-group-item list-group-item-action">tb3</a>
+            <button *ngFor="let items of tableName" (click)="listTables(items)" class="list-group-item list-group-item-action">{{items}}</button>
         </div>
     </div>
 </div>

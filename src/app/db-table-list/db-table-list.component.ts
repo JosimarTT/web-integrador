@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { schemaModel } from '../clases/schema-model';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { TablesService } from '../services/tables.service';
 
 @Component({
   selector: 'app-db-table-list',
@@ -7,25 +10,33 @@ import { schemaModel } from '../clases/schema-model';
   styleUrls: ['./db-table-list.component.css']
 })
 export class DbTableListComponent implements OnInit {
-  private schema1: schemaModel;
-  private schema2: schemaModel;
-  private schema3: schemaModel;
-  private schema4: schemaModel;
+  private databaseName: string;
+  public tableName: string[];
 
-  constructor() { }
+  constructor(private enrutador: Router, private location: Location, private active: ActivatedRoute, private servicioDatos: TablesService) {
+    this.tableName = [];
+
+    this.active.params.subscribe(
+      (params) => {
+        this.databaseName = params.db;
+      }
+    )
+
+    this.loadTables(this.databaseName);
+  }
 
   ngOnInit() {
   }
 
-  loadSchemas() {
-    this.schema1 = new schemaModel("SCHEMA transactional", ["tb_configuracion", "tb_documento",
-      "tb_resumen_comprobante", "tb_documento_registro", "tb_spam", "tb_notificacion", "tb_error"]);
-    this.schema2 = new schemaModel("SCHEMA repository", ["tb_factura", "tb_boleta", "tb_documentos"]);
-    this.schema3 = new schemaModel("SCHEMA control", ["tb_contribuyente", "tb_comprobante",
-      "logging_event", "tb_ose", "tb_multiple", "tb_parametro", "tb_moneda", "tb_catalogo", "tb_pais"]);
-    this.schema4 = new schemaModel("SCHEMA security", ["tb_empresa", "tb_impresion_personalizada",
-      "tb_oauth_client", "tb_user", "tb_user_oauth_client", "tb_role_user", "tb_permission",
-      "tb_role", "tb_permission_role"]);
+  loadTables(db: string) {
+    this.tableName = this.servicioDatos.loadTables(db);
+    console.log(this.tableName);
   }
+  listTables(table: string) {
+    this.enrutador.navigate(['table-description', table]);
+  }
+  funReturn() {
+    this.location.back();
 
+  }
 }

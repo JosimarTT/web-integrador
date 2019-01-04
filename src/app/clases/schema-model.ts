@@ -1,9 +1,9 @@
 export class schemaModel {
-    private schema: string;
+    public schema: string;
     /**
      *
      */
-    constructor(nombre: string, contenido: string[]) {
+    constructor(nombre: string, public contenido: string[]) {
         this.schema = nombre;
         //super();
 
