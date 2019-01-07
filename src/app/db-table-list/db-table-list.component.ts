@@ -12,6 +12,7 @@ import { TablesService } from '../services/tables.service';
 export class DbTableListComponent implements OnInit {
   private databaseName: string;
   public tableName: string[];
+  public img: string;
 
   constructor(private enrutador: Router, private location: Location, private active: ActivatedRoute, private servicioDatos: TablesService) {
     this.tableName = [];
@@ -23,6 +24,7 @@ export class DbTableListComponent implements OnInit {
     )
 
     this.loadTables(this.databaseName);
+    this.loadImg(this.databaseName);
   }
 
   ngOnInit() {
@@ -32,9 +34,18 @@ export class DbTableListComponent implements OnInit {
     this.tableName = this.servicioDatos.loadTables(db);
     console.log(this.tableName);
   }
+
+  loadImg(db: string) {
+    this.img = this.servicioDatos.loadImg(db);
+    console.log(this.img);
+  }
+
   listTables(table: string) {
     this.enrutador.navigate(['table-description', table]);
   }
+
+
+
   funReturn() {
     this.location.back();
 

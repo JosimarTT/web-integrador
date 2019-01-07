@@ -2,6 +2,7 @@
   <h1>Listado de las Bases de Datos</h1>
   <div class="container text-center col-md-4 col-offset-4">
     <div class="list-group">
+      <br>
       <button *ngFor="let items of dbslocal" (click)="listDatabases(items.nombre_db)" class="list-group-item list-group-item-action">{{items.nombre_db}}</button>
 
       <!-- <button (click)="funTablas()" class="list-group-item list-group-item-action">Principal</button>
