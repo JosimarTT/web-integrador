@@ -11,6 +11,7 @@ import { DescriptionsService } from '../services/descriptions.service';
 })
 export class TableDescriptionComponent implements OnInit {
   private tableName: string;
+  private table: string;
   private description: object[];
 
   constructor(private location: Location, private active: ActivatedRoute, private servicioDatos: DescriptionsService) {
@@ -21,6 +22,7 @@ export class TableDescriptionComponent implements OnInit {
     )
 
     this.loadDescriptions(this.tableName);
+    this.loadTableDesc(this.tableName);
   }
 
   ngOnInit() {
@@ -32,5 +34,10 @@ export class TableDescriptionComponent implements OnInit {
   loadDescriptions(tableName: string) {
     this.description = this.servicioDatos.loadDescription(tableName);
     console.log(this.description);
+  }
+
+  loadTableDesc(tableName: string) {
+    this.table = this.servicioDatos.loadTableDesc(tableName);
+    console.log(this.table);
   }
 }

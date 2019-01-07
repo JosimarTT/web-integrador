@@ -35,15 +35,15 @@ export class TablesService {
   fillTables() {
     this.table = new schemaModel("DB Principal", ["tb_configuracion", "tb_documento",
       "tb_resumen_comprobante", "tb_documento_registro", "tb_spam", "tb_notificacion", "tb_error",
-      "tb_factura", "tb_boleta"], 'assets/img/principal.png');
+      "tb_factura", "tb_boleta"], 'assets/img/tables_principal.png');
     this.tables.push(this.table);
     this.table = new schemaModel("DB Control", ["tb_contribuyente", "tb_comprobante",
       "logging_event", "tb_ose", "tb_multiple", "tb_parametro", "tb_moneda", "tb_catalogo", "tb_pais"],
-      'assets/img/control.png');
+      'assets/img/tables_control.png');
     this.tables.push(this.table);
     this.table = new schemaModel("DB Seguridad", ["tb_empresa", "tb_impresion_personalizada",
       "tb_oauth_client", "tb_user", "tb_user_oauth_client", "tb_role_user", "tb_permission",
-      "tb_role", "tb_permission_role"], 'assets/img/seguridad.png');
+      "tb_role", "tb_permission_role"], 'assets/img/tables_seguridad.png');
     this.tables.push(this.table);
   }
 }

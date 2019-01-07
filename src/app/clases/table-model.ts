@@ -3,7 +3,7 @@ export class tableModel {
     /**
      *
      */
-    constructor(nombre: string, public contenido: {}[]) {
+    constructor(nombre: string, public contenido: {}[], public tableDesc: string) {
         this.nombre_table = nombre;
         //super();
 

@@ -4,10 +4,6 @@
     <div class="list-group">
       <br>
       <button *ngFor="let items of dbslocal" (click)="listDatabases(items.nombre_db)" class="list-group-item list-group-item-action">{{items.nombre_db}}</button>
-
-      <!-- <button (click)="funTablas()" class="list-group-item list-group-item-action">Principal</button>
-      <button (click)="funTablas()" class="list-group-item list-group-item-action">Control</button>
-      <button (click)="funTablas()" class="list-group-item list-group-item-action">Seguridad</button> -->
     </div>
   </div>
 </div>
