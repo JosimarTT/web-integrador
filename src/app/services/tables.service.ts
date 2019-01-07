@@ -33,17 +33,18 @@ export class TablesService {
   }
 
   fillTables() {
-    this.table = new schemaModel("DB Principal", ["tb_configuracion", "tb_documento",
-      "tb_resumen_comprobante", "tb_documento_registro", "tb_spam", "tb_notificacion", "tb_error",
-      "tb_factura", "tb_boleta"], 'assets/img/tables_principal.png');
+    this.table = new schemaModel("DB Principal", ["transactional.tb_configuracion", "transactional.tb_documento",
+      "transactional.tb_resumen_comprobante", "transactional.tb_documento_registro", "transactional.tb_spam",
+      "transactional.tb_notificacion", "transactional.tb_error", "repository.tb_factura",
+      "repository.tb_boleta"], 'assets/img/tables_principal.png');
     this.tables.push(this.table);
-    this.table = new schemaModel("DB Control", ["tb_contribuyente", "tb_comprobante",
-      "logging_event", "tb_ose", "tb_multiple", "tb_parametro", "tb_moneda", "tb_catalogo", "tb_pais"],
+    this.table = new schemaModel("DB Control", ["control.tb_contribuyente", "control.tb_comprobante",
+      "control.logging_event", "control.tb_ose", "control.tb_multiple", "control.tb_parametro", "control.tb_moneda", "control.tb_catalogo", "control.tb_pais"],
       'assets/img/tables_control.png');
     this.tables.push(this.table);
-    this.table = new schemaModel("DB Seguridad", ["tb_empresa", "tb_impresion_personalizada",
-      "tb_oauth_client", "tb_user", "tb_user_oauth_client", "tb_role_user", "tb_permission",
-      "tb_role", "tb_permission_role"], 'assets/img/tables_seguridad.png');
+    this.table = new schemaModel("DB Seguridad", ["security.tb_empresa", "security.tb_impresion_personalizada",
+      "security.tb_oauth_client", "security.tb_user", "security.tb_user_oauth_client", "security.tb_role_user", "security.tb_permission",
+      "security.tb_role", "security.tb_permission_role"], 'assets/img/tables_seguridad.png');
     this.tables.push(this.table);
   }
 }

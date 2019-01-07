@@ -10,6 +10,7 @@ import { DatabasesService } from '../services/databases.service';
 })
 export class DbListComponent implements OnInit {
   public dbslocal: Array<dbModel> = [];
+  public dbImg: string;
 
   constructor(private enrutador: Router, private servicioDatos: DatabasesService) {
     this.dbslocal = [];
@@ -20,6 +21,9 @@ export class DbListComponent implements OnInit {
   listDatabases(db: string) {
     //this.enrutador.navigate(['db-schema-list', db]);
     this.enrutador.navigate(['db-table-list', db]);
+  }
+  databasesImg() {
+    this.enrutador.navigate(['db-img']);
   }
   loadDatabases() {
     this.dbslocal = this.servicioDatos.loadDatabases();

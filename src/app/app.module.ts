@@ -7,13 +7,15 @@ import { DbListComponent } from './db-list/db-list.component';
 import { DbTableListComponent } from './db-table-list/db-table-list.component';
 import { TableDescriptionComponent } from './table-description/table-description.component';
 import { RutasModule } from './rutas.module';
+import { DbImgComponent } from './db-img/db-img.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DbListComponent,
     DbTableListComponent,
-    TableDescriptionComponent
+    TableDescriptionComponent,
+    DbImgComponent
   ],
   imports: [
     BrowserModule,

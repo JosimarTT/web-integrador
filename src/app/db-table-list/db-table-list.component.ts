@@ -10,7 +10,7 @@ import { TablesService } from '../services/tables.service';
   styleUrls: ['./db-table-list.component.css']
 })
 export class DbTableListComponent implements OnInit {
-  private databaseName: string;
+  public databaseName: string;
   public tableName: string[];
   public img: string;
 
@@ -32,16 +32,20 @@ export class DbTableListComponent implements OnInit {
 
   loadTables(db: string) {
     this.tableName = this.servicioDatos.loadTables(db);
-    console.log(this.tableName);
+    //     
+    //  funcion para pasar todo a mayusculas
+    //
+    this.tableName.forEach((item, index) => {
+      this.tableName[index] = this.tableName[index].toUpperCase();
+    });
   }
 
   loadImg(db: string) {
     this.img = this.servicioDatos.loadImg(db);
-    console.log(this.img);
   }
 
   listTables(table: string) {
-    this.enrutador.navigate(['table-description', table]);
+    this.enrutador.navigate(['table-description', table.toLowerCase()]);
   }
 
 

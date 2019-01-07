@@ -4,7 +4,7 @@ export class dbModel {
     /**
      *
      */
-    constructor(nombre: string, contenido?: string[]) {
+    constructor(nombre: string, public dbImg: string) {
         this.nombre_db = nombre;
         // super();
     }

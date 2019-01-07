@@ -5,9 +5,16 @@
     <button type="button" class="btn btn-primary" (click)="funReturn()">Regresar</button><br><br>
     <img [src]='img' style="width:99%" alt="">
     <div class="container text-center col-md-4 col-offset-4">
-        <div class="list-group">
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let items of tableName" (click)="listTables(items)">
+                    <td>{{items}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!--         <div class="list-group">
             <br>
             <button *ngFor="let items of tableName" (click)="listTables(items)" class="list-group-item list-group-item-action">{{items}}</button>
-        </div>
+        </div> -->
     </div>
 </div>

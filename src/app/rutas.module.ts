@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { DbListComponent } from './db-list/db-list.component';
 import { DbTableListComponent } from './db-table-list/db-table-list.component';
 import { TableDescriptionComponent } from './table-description/table-description.component';
+import { DbImgComponent } from './db-img/db-img.component';
 
 const rutas: Routes = [
   {
@@ -14,6 +15,10 @@ const rutas: Routes = [
   {
     path: 'db-list',
     component: DbListComponent
+  },
+  {
+    path: 'db-img',
+    component: DbImgComponent
   },
   {
     path: 'db-table-list/:db',

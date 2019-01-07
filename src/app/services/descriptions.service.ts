@@ -33,7 +33,7 @@ export class DescriptionsService {
   }
 
   fillDescriptions() {
-    this.description = new tableModel("tb_configuracion", [
+    this.description = new tableModel("transactional.tb_configuracion", [
       {
         llave: "PK",
         nombre: "llave",
@@ -49,7 +49,7 @@ export class DescriptionsService {
       }
     ], 'Utilizada para almacenar valores de configuración global para el sistema de facturación electrónica');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_documento", [
+    this.description = new tableModel("transactional.tb_documento", [
       {
         llave: "PK",
         nombre: "id",
@@ -156,7 +156,7 @@ export class DescriptionsService {
         descripcion: "Campo que permite un bloqueo lógico de los registros"
       }], 'Tabla principal del esquema, almacena la información de todos los tipos de documentos procesados por el sistema de facturación electrónica. Según la naturaleza de su función, la información es transitoria en el sentido de que no persiste mucho tiempo en esta tabla');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_resumen_comprobante", [
+    this.description = new tableModel("transactional.tb_resumen_comprobante", [
       {
         llave: "",
         nombre: "doc_resumen",
@@ -179,7 +179,7 @@ export class DescriptionsService {
         descripcion: "Valor utilizado por el sistema de facturación electrónica"
       },], 'Tiene como finalidad mantener la relación entre un documento resumen y sus documentos detalle');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_documento_registro", [
+    this.description = new tableModel("transactional.tb_documento_registro", [
       {
         llave: "PK",
         nombre: "id",
@@ -258,7 +258,7 @@ export class DescriptionsService {
         descripcion: "Almacena la fecha y hora de creación del registro en la tabla"
       }], 'El objetivo de esta tabla es registrar todas las operaciones que el sistema de facturación electrónica realiza con un documento');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_spam", [
+    this.description = new tableModel("transactional.tb_spam", [
       {
         llave: "",
         nombre: "MAIL",
@@ -281,7 +281,7 @@ export class DescriptionsService {
         descripcion: "Almacena la información o motivo del bloque"
       }], 'El objetivo de esta tabla es almacenar las direcciones de correo electrónico que serán bloqueadas en el proceso de notificación');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_notificacion", [
+    this.description = new tableModel("transactional.tb_notificacion", [
       {
         llave: "PK",
         nombre: "id",
@@ -374,7 +374,7 @@ export class DescriptionsService {
         descripcion: ""
       },], 'Almacena todas las notificaciones generadas por el sistema de facturación electrónica');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_error", [
+    this.description = new tableModel("transactional.tb_error", [
       {
         llave: "PK",
         nombre: "codigo",
@@ -409,8 +409,9 @@ export class DescriptionsService {
         tipo: "INTEGER",
         longitud: "",
         descripcion: "Información útil para el sistema de facturación electrónica"
-      },], 'Almacena los códigos de error y descripción, utilizado por el sistema de facturación electrónica');
-    this.description = new tableModel("tb_factura", [
+      }], 'Almacena los códigos de error y descripción, utilizado por el sistema de facturación electrónica');
+    this.descriptions.push(this.description);
+    this.description = new tableModel("repository.tb_factura", [
       {
         llave: "PK",
         nombre: "tipoDocumentoEmisor",
@@ -454,7 +455,7 @@ export class DescriptionsService {
         descripcion: "Almacena la información completa del documento en formato JSON"
       }], 'Almacena la información histórica de todos los documentos del tipo FACTURA');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_boleta", [
+    this.description = new tableModel("repository.tb_boleta", [
       {
         llave: "PK",
         nombre: "tipoDocumentoEmisor",
@@ -498,15 +499,15 @@ export class DescriptionsService {
         descripcion: ""
       }], 'Almacena la información histórica de todos los documentos del tipo BOLETA');
     this.descriptions.push(this.description);
-    this.description = new tableModel('tb_resumen_comprobante', [
+    this.description = new tableModel('repository.tb_resumen_comprobante', [
 
     ], 'Información histórica de la tabla TRANSACTIONAL.TB_RESUMEN_COMPROBANTE');
     this.descriptions.push(this.description);
-    this.description = new tableModel('vw_documentos', [
+    this.description = new tableModel('repository.vw_documentos', [
 
     ], 'Esta vista tiene el objetivo de mostrar todos los registros almacenados en las tablas TRANSACTIONAL.TB_DOCUMENTO en unión con las demás tablas del esquema REPOSITORY por tipo de documento. Está definida como una vista simple, pero dada la magnitud del crecimiento de la información en el esquema REPOSITORY es recomendable definir una vista materializada');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_contribuyente", [
+    this.description = new tableModel("control.tb_contribuyente", [
       {
         llave: "PK",
         nombre: "codigo",
@@ -522,7 +523,7 @@ export class DescriptionsService {
         descripcion: "Número indicador de habilitación del emisor. Cero significa activo"
       }], 'Almacena información de los sujetos emisores dentro del dominio de facturación electrónica');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_comprobante", [
+    this.description = new tableModel("control.tb_comprobante", [
       {
         llave: "PK",
         nombre: "id",
@@ -580,7 +581,7 @@ export class DescriptionsService {
         descripcion: ""
       }], 'Dentro de la naturaleza funcional de la BD CONTROL, esta tabla es fundamental para llevar el control de todos aquellos documentos que son procesados por el sistema de facturación electrónica, en base a los campos de unicidad de un documento');
     this.descriptions.push(this.description);
-    this.description = new tableModel("logging_event", [
+    this.description = new tableModel("control.logging_event", [
       {
         llave: "PK",
         nombre: "event_id",
@@ -596,7 +597,7 @@ export class DescriptionsService {
         descripcion: "Cada registro es una línea del log generado por alguna aplicación del sistema de facturación electrónica en formato JSON"
       }], 'Esta tabla almacena todo los logs generados por las diferentes aplicaciones del sistema de facturación electrónica');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_ose", [
+    this.description = new tableModel("control.tb_ose", [
       {
         llave: "",
         nombre: "id",
@@ -626,7 +627,7 @@ export class DescriptionsService {
         descripcion: "Información en formato JSON que permite clasificar las diferentes URLs utilizadas por una entidad OSE para recibir la declaración de un tipo de documento (o de todos por defecto)"
       },], 'Sirve para registrar todas las entidades OSE a quienes se enviarán los documentos a declarar');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_multiple", [
+    this.description = new tableModel("control.tb_multiple", [
       {
         llave: "",
         nombre: "cod_item_tabla",
@@ -656,7 +657,7 @@ export class DescriptionsService {
         descripcion: ""
       },], 'Tabla heredada del modelo de datos anterior');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_parametro", [
+    this.description = new tableModel("control.tb_parametro", [
       {
         llave: "",
         nombre: "da_valor_parametro",
@@ -679,7 +680,7 @@ export class DescriptionsService {
         descripcion: ""
       }], 'Tabla heredada del modelo de datos anterior');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_moneda", [
+    this.description = new tableModel("control.tb_moneda", [
       {
         llave: "",
         nombre: "co_tipo_moneda",
@@ -695,7 +696,7 @@ export class DescriptionsService {
         descripcion: ""
       }], 'Tabla heredada del modelo de datos anterior');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_catalogo", [
+    this.description = new tableModel("control.tb_catalogo", [
       {
         llave: "",
         nombre: "codigo",
@@ -718,7 +719,7 @@ export class DescriptionsService {
         descripcion: ""
       }], 'Tabla heredada del modelo de datos anterior');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_pais", [
+    this.description = new tableModel("control.tb_pais", [
       {
         llave: "",
         nombre: "id",
@@ -741,7 +742,7 @@ export class DescriptionsService {
         descripcion: ""
       }], 'Tabla heredada del modelo de datos anterior');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_empresa", [
+    this.description = new tableModel("security.tb_empresa", [
       {
         llave: "PK",
         nombre: "tip_cod_tributario",
@@ -827,7 +828,7 @@ export class DescriptionsService {
         descripcion: "Información adicional del emisor en formato JSON. Muchos de los valores almacenados en este campo son heredados del modelo de datos anterior"
       }], 'Esta tabla tiene la finalidad de almacenar toda la información respecto a la entidad emisor dentro del dominio de facturación electrónica. Esto es, toda aquella información sensible y necesaria que el ente regulador identifique a esta entidad como emisor de facturación electrónica');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_impresion_personalizada", [
+    this.description = new tableModel("security.tb_impresion_personalizada", [
       {
         llave: "",
         nombre: "tip_cod_tributario",
@@ -864,7 +865,7 @@ export class DescriptionsService {
         descripcion: "Nombre canónico de la clase Java encargada de generar la representación impresa personalizada"
       }], 'Información útil para una de las aplicaciones del sistema de facturación electrónica, encargada de elaborar las representaciones impresas personalizadas de los documentos');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_oauth_client", [
+    this.description = new tableModel("security.tb_oauth_client", [
       {
         llave: "PK",
         nombre: "client_id",
@@ -943,7 +944,7 @@ export class DescriptionsService {
         descripcion: "Roles que fueron aprovados por defecto para la aplicación cliente"
       }], 'Información útil para el estándar OAUTH2. Almacena la información de la aplicación cliente que accede a los recursos protegidos del usuario');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_user", [
+    this.description = new tableModel("security.tb_user", [
       {
         llave: "PK",
         nombre: "id",
@@ -1001,7 +1002,7 @@ export class DescriptionsService {
         descripcion: "Cuenta bloqueada o no"
       }], 'Almacena la información del usuario dueño de los recursos');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_user_oauth_client", [
+    this.description = new tableModel("security.tb_user_oauth_client", [
       {
         llave: "FK",
         nombre: "user_id",
@@ -1017,7 +1018,7 @@ export class DescriptionsService {
         descripcion: ""
       }], 'Tabla de relación de muchos a muchos entre tb_user y tb_oauth_client');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_permission", [
+    this.description = new tableModel("security.tb_permission", [
       {
         llave: "PK",
         nombre: "id",
@@ -1033,7 +1034,7 @@ export class DescriptionsService {
         descripcion: "Nombre del permiso"
       }], 'Almacena la información de los permisos dentro del dominio del sistema de facturación electrónica para los usuario con acceso a recursos protegidos');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_role", [
+    this.description = new tableModel("security.tb_role", [
       {
         llave: "PK",
         nombre: "id",
@@ -1049,7 +1050,7 @@ export class DescriptionsService {
         descripcion: "Nombre del rol"
       }], 'Almacena la información de los roles dentro del dominio del sistema de facturación electrónica para los usuario con acceso a recursos protegidos');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_permission_role", [
+    this.description = new tableModel("security.tb_permission_role", [
       {
         llave: "FK",
         nombre: "permission_id",
@@ -1065,7 +1066,7 @@ export class DescriptionsService {
         descripcion: ""
       }], 'Tabla de relación de muchos a muchos entre tb_role y tb_permission');
     this.descriptions.push(this.description);
-    this.description = new tableModel("tb_role_user", [
+    this.description = new tableModel("security.tb_role_user", [
       {
         llave: "FK",
         nombre: "role_id",
